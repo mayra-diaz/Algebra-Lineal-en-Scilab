@@ -82,6 +82,7 @@ function [M, s] = gauss(A, b)
             A(j,:) = A(j,:) - r*A(i,:)
             b(j,:) = b(j,:) - r*b(i,:)
         end
+    end
     s = sustinv(A, b)
     M = A
 endfunction
@@ -114,4 +115,15 @@ function rpta = intercambiarFilas(A, i, j)
     A(i,:) = A(j,:)
     A(j,:) = temp
     rpta = A
+endfunction
+
+function M = gauss_no_cuadrada(A)
+    [m,n] = size(A)
+    for i = 1:n
+        for j = i+1:m
+            r = A(j,i)/A(i,i)
+            A(j,:) = A(j,:) - r*A(i,:)
+        end
+    end
+    M = A
 endfunction
