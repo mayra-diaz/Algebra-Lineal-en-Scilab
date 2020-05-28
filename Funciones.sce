@@ -117,6 +117,7 @@ function rpta = intercambiarFilas(A, i, j)
     rpta = A
 endfunction
 
+// Eliminación gaussiana matriz no cuadrada
 function M = gauss_no_cuadrada(A)
     [m,n] = size(A)
     for i = 1:n
