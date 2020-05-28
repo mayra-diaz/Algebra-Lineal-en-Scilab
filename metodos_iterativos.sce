@@ -21,7 +21,7 @@ endfunction
 
 
 // Gauss Seidel
-function [e, vf]= gauss_seidel_perf(matriz, x0, tol)
+function [e, vf]= gauss_seidel_perf(matriz, b, x0, tol)
     [m, n] = size(matriz)
     D = diag(diag(matriz))
     L = tril(A, -1)*-1
@@ -40,8 +40,11 @@ function [e, vf]= gauss_seidel_perf(matriz, x0, tol)
     end
 endfunction
 
+[e, v] = gauss_seidel(A, b, x0, 1e-3)
+disp(v)
+
 // Gauss Seidel
-function [e, vf] = gauss_seidel(matriz, x0, b, it)
+function [e, vf] = gauss_seidel(matriz, b, x0, it)
     [m, n] = size(matriz)
     D = diag(diag(matriz))
     L = tril(A, -1)*-1
@@ -63,7 +66,7 @@ endfunction
 
 
 // Jacobi
-function z = jacobi_perf(matriz, x0, tol)
+function z = jacobi_perf(matriz, b, x0, tol)
     [m, n] = size(matriz)
     D = diag(diag(matriz))
     L = tril(A, -1)
@@ -83,7 +86,7 @@ function z = jacobi_perf(matriz, x0, tol)
 endfunction
 
 // Jacobi
-function [e, vf] = jacobi(matriz, x0, it)
+function [e, vf] = jacobi(matriz, b, x0, it)
     [m, n] = size(matriz)
     D = diag(diag(matriz))
     L = tril(A, -1)

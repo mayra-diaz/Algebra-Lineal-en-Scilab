@@ -11,3 +11,5 @@ clc
 // t = spec(A)
 // policar = poly(t', "lamba", "roots")
 // disp(policar)
+
+// Método de la potencia
