@@ -1,4 +1,4 @@
-def function npoint = rotar_x(ang, point)
+function npoint = rotar_x(ang, point)
     ang = ang/180*%pi
     c = cos(ang)
     s = sin(ang)
@@ -7,7 +7,7 @@ def function npoint = rotar_x(ang, point)
     npoint = rx*point
 endfunction
 
-def function npoint = rotar_y(ang, point)
+function npoint = rotar_y(ang, point)
     ang = ang/180*%pi
     c = cos(ang)
     s = sin(ang)
@@ -17,7 +17,7 @@ def function npoint = rotar_y(ang, point)
 endfunction
 
 
-def function npoint = rotar_z(ang, point)
+function npoint = rotar_z(ang, point)
     ang = ang/180*%pi
     c = cos(ang)
     s = sin(ang)
@@ -25,5 +25,3 @@ def function npoint = rotar_z(ang, point)
     rz = [c -s 0; s c 0; 0 0 1]
     npoint = rz*point
 endfunction
-
-

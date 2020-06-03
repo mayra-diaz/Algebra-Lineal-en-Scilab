@@ -1,6 +1,3 @@
-clc
-
-
 // Comandos
 
 // A = [matriz]

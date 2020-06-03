@@ -1,5 +1,8 @@
-//funciones
-
+/*
+------------------------------------------------------
+                    FROBENIUS
+------------------------------------------------------
+*/
 
 //FROBENIUS
 function    bool = frobenius(A,b)
@@ -23,6 +26,12 @@ function    bool = frobenius(A,b)
 end
 
 
+/*
+------------------------------------------------------
+                    SUSTITUCIONES
+------------------------------------------------------
+*/
+
 //SUSTITUCIÓN DIRECTA
 function x=sustidir(L,b)
     [m,n]=size(L)
@@ -42,6 +51,12 @@ function x =sustinv(U,b)
     end
 endfunction
 
+
+/*
+------------------------------------------------------
+                   FACTORIZACIÓN LU
+------------------------------------------------------
+*/
 
 //CROUT
 function[L,U]= crout(A)
@@ -72,6 +87,12 @@ function[L,U]= doolitle(A)
     end
 endfunction
 
+
+/*
+------------------------------------------------------
+                 ELIMINACIÓN GAUSSIANA
+------------------------------------------------------
+*/
 
 //ELIMINACIÓN GAUSSIANA
 function [M, s] = gauss(A, b)
