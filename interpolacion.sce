@@ -4,11 +4,9 @@ function polinomio = interpolacion_polinomial(x, y)
    M = [M x]
    for i = 3:n
       aux = x(:)^(i-1)
-      disp(aux, 'aux');
       M = [M aux]
    end
    coeficientes = inv(M)*y
-   disp(coeficientes, 'coeficientes');
    polinomio = poly(coeficientes, 'x', 'c')
 endfunction
 

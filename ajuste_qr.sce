@@ -8,8 +8,8 @@
 //disp(v)
 
 //Creando el polinomio
-p=poly(v($:-1:1),"x","c")
-disp(p)
+//p=poly(v($:-1:1),"x","c")
+//disp(p)
 
 
 function [P] = ajuste_qr_a_mano(x, y, m)
