@@ -1,14 +1,52 @@
+function polinomio = interpolacion_polinomial(x, y)
+   n = length(x)
+   M = ones(n, 1)
+   M = [M x]
+   for i = 3:n
+      aux = x(:)^(i-1)
+      disp(aux, 'aux');
+      M = [M aux]
+   end
+   coeficientes = inv(M)*y
+   disp(coeficientes, 'coeficientes');
+   polinomio = poly(coeficientes, 'x', 'c')
+endfunction
+
+
 function tabla = diferencias_divididas(x, y)
-   n=length(xd);
-  dfd=zeros(n,n);
-  dfd(:,1)=yd(:);
-  for j=2:n
+   n = length(x);
+   dfd=zeros(n,n);
+   dfd(:,1)=y;
+   for j=2:n
       for i=j:n
-          dfd(i,j)=(dfd(i,j-1)-dfd(i-1,j-1))/(xd(i)-xd(i-j+1))
+         dfd(i,j)=(dfd(i,j-1)-dfd(i-1,j-1))/(x(i)-x(i-j+1))
       end
-  end
-  N=dfd(1,1);
-  for i=2:n
-      N=N+dfd(i,i)*poly(xd(1:(i-1)),"x");
-  end
+   end
+   tabla = dfd
+endfunction
+
+
+function polinomio = interpolacion_newton(x, y)
+   n = length(x)
+   dfd = diferencias_divididas(x, y)
+   P = dfd(1,1);
+   for i=2:n
+      P = P + dfd(i,i) * poly (x(1:(i-1)), "x");
+   end
+   polinomio = P
+endfunction
+
+
+function polinomio = interpolacion_lagrange(x, y)
+   n = length(x)
+   xi=poly(0,"x")
+   P=0;
+   for i=1:n
+      L=1
+      for j=[1:i-1,i+1:n]
+         L=L*(xi-x(j))/(x(i)-x(j))
+      end
+      P = P + L*y(i)
+   end
+   polinomio = P
 endfunction

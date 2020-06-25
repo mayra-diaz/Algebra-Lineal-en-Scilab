@@ -32,7 +32,18 @@
 //exec('~\mate-III\Algebra-Lineal-en-Scilab\ajuste_qr.sce', -1)
 
 // Interpolacion Polinomial-Newton-Lagrange
-//exec('~\mate-III\Algebra-Lineal-en-Scilab\interpolacion.sce', -1)
+exec('~\mate-III\Algebra-Lineal-en-Scilab\interpolacion.sce', -1)
 
 // Spline natural
 //exec('~\mate-III\Algebra-Lineal-en-Scilab\spline_natural.sce', -1)
+
+x = [-2 0 1]'
+y = [-27 -1 0]'
+
+newt = interpolacion_newton(x, y)
+lagr = interpolacion_lagrange(x, y)
+polinm = interpolacion_polinomial(x, y)
+
+disp(newt, 'Newton')
+disp(lagr, 'Lagrange');
+disp(polinm, 'polinomial');

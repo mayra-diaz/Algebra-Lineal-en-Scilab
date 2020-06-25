@@ -1,3 +1,17 @@
+//Factorización QR
+//[Q,R]=qr(M)
+//disp(Q)
+//disp(R)
+//R=R(1:5,1:5)
+//Q=Q(:,1:5)
+//v=inv(R)*Q'*y
+//disp(v)
+
+//Creando el polinomio
+p=poly(v($:-1:1),"x","c")
+disp(p)
+
+
 function [P] = ajuste_qr_a_mano(x, y, m)
    // Se obtiene el polinomio que mejor ajusta los datos
    // (xi,yi), i =1,...n mediante un polinomio de grado m

@@ -1,4 +1,4 @@
-function [S, poll]=splinenatural(x, y)
+function [S, poll]=spline_natural(x, y)
    n = length(x)-1;
    poll = zeros(n-1,1)
    h = diff(x); dd = diff(y)./h;
@@ -6,9 +6,9 @@ function [S, poll]=splinenatural(x, y)
    diagprinc = 2*(h(1:n -1) + h(2:n ));
    M0=0; Mn =0;
    if n > 2 then
-       H = diag(diagprinc) + diag(diagsupinf,1) + diag(diagsupinf,-1);
+      H = diag(diagprinc) + diag(diagsupinf,1) + diag(diagsupinf,-1);
    else
-       H = diag(diagprinc)
+      H = diag(diagprinc)
    end
    dy =6*diff(dd') ;// Matriz de diferencias divididas
    M = H\dy ;
@@ -16,17 +16,29 @@ function [S, poll]=splinenatural(x, y)
    disp(M)
    // plot (x,y, ’or ’) // Activar para visualizar los puntos
    for i =1:n
-       S(i,1) =(M(i+1) - M(i))/(6*h(i)) ;
-       S(i,2) = M(i)/2;
-       S(i,3) = dd(i) - h(i)*(M(i+1) + 2* M(i))/6;
-       S(i,4) = y(i) ;
-       pol = S(i,:) ;
-       pol = poly(pol($:-1:1) ,'x','coeff');
-       xx = linspace(x(i),x(i+1),100)-x(i)';
-       z = poly (0,'z');
-       poll(i) = horner(pol,z - x(i));
-       yy = horner(pol,xx) ;
-       plot(xx + x(i),yy,'b-');
-       z = poly (0,'z');
+      S(i,1) =(M(i+1) - M(i))/(6*h(i)) ;
+      S(i,2) = M(i)/2;
+      S(i,3) = dd(i) - h(i)*(M(i+1) + 2* M(i))/6;
+      S(i,4) = y(i) ;
+      pol = S(i,:) ;
+      pol = poly(pol($:-1:1) ,'x','coeff');
+      xx = linspace(x(i),x(i+1),100)-x(i)';
+      z = poly (0,'z');
+      poll(i) = horner(pol,z - x(i));
+      yy = horner(pol,xx) ;
+      plot(xx + x(i),yy,'b-');
+      z = poly (0,'z');
    end
 endfunction
+
+//x=[2 3 5,6]
+//y=[-1 2 -7,9]
+//N=length(x)
+//xx=[2:0.01:5]'
+//d=splin(x,y,"natural")
+//ys=interp(xx,x,y,d)
+//plot2d(xx,ys)
+//xgrid(10)
+//[S,poll]=splinenatural(x,y)
+//disp(S)
+//disp(poll)
