@@ -9,7 +9,7 @@ function bool = es_estrictamente_dominante(M)
     [m, n] = size(M)
     bool = 1
     for k = 1:n
-        if abs(M(k,k)) <= sum(abs(M(k,:)) - abs(M(k,k) then
+        if abs(M(k,k)) <= (sum(abs(M(k,:)) - abs(M(k,k)))) then
             bool = 0
             break
         end

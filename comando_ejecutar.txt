@@ -1,0 +1,1 @@
+exec('~\mate-III\Algebra-Lineal-en-Scilab\pruebas.sce',-1)

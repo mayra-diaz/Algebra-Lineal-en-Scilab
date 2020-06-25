@@ -5,7 +5,7 @@
 */
 
 deff('y=f(x)', 'y= 2*x')
-deff('y=g(x), y= 2*x')
+deff('y=g(x)', 'y= 2*x')
 
 
 /*
