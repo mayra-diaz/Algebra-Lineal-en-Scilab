@@ -32,18 +32,21 @@
 //exec('~\mate-III\Algebra-Lineal-en-Scilab\ajuste_qr.sce', -1)
 
 // Interpolacion Polinomial-Newton-Lagrange
-exec('~\mate-III\Algebra-Lineal-en-Scilab\interpolacion.sce', -1)
+//exec('~\mate-III\Algebra-Lineal-en-Scilab\interpolacion.sce', -1)
 
 // Spline natural
 //exec('~\mate-III\Algebra-Lineal-en-Scilab\spline_natural.sce', -1)
 
-x = [-2 0 1]'
-y = [-27 -1 0]'
+// Integracion numerica
+exec('~\mate-III\Algebra-Lineal-en-Scilab\integracion_numerica.sce', -1)
 
-newt = interpolacion_newton(x, y)
-lagr = interpolacion_lagrange(x, y)
-polinm = interpolacion_polinomial(x, y)
+x = [0 2 4 6 8]'
+y = [0 1 1 1.3 1.3]'
 
-disp(newt, 'Newton')
-disp(lagr, 'Lagrange');
-disp(polinm, 'polinomial');
+T = trapecio_compuesto_puntos(x, y)
+S= simpson_compuesto_puntos(x, y)
+disp('Simpson: ', S)
+disp('Trapecio: ', T)
+
+t = inttrap(x, y)
+disp('Trapecio real: ', t)
