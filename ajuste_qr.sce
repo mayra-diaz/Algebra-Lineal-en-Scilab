@@ -40,5 +40,5 @@ function [P] = ajuste_qr_a_mano(x, y, m)
    xx = linspace(0,3*%pi,100)';
    P = poly(coef,'x','coeff')
    yy = horner(P,xx);
-   plot(xx,yy,'b-')
+   //plot(xx,yy,'b-')
 endfunction
