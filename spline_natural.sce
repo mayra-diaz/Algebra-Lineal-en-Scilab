@@ -58,7 +58,8 @@ function [S, poll]=spline_natural(x, y)
       S(i,4) = y(i) ;
       pol = S(i,:) ;
       pol = poly(pol($:-1:1) ,'x','coeff');
-      poll(i) = pol
+      z = poly (0,'x');
+      poll(i) = horner(pol, z - x(i));
    end
 endfunction
 
