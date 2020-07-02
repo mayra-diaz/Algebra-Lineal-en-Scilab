@@ -3,14 +3,15 @@ function polinomio = interpolacion_polinomial(x, y, grado)
    if n >= grado then
       M = ones(n, 1)
       M = [M x]
-      for i = 3:grado
+      for i = 3:grado+1
          aux = x(:)^(i-1)
          M = [M aux]
       end
-      coeficientes = inv(M)*y
+      coeficientes = inv(M'*M)*M'*y
       polinomio = poly(coeficientes, 'x', 'c')
    else
       disp('No es posible realizar la interpolacion');
+   end
 endfunction
 
 
