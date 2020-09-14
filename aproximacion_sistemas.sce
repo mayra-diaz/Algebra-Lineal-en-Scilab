@@ -74,6 +74,30 @@ function [e, vf, z]= gauss_seidel_tol(A, b, x0, tol)
 endfunction
 
 
+function x= GAUSSN(A,b,N)
+    D=diag(diag(A))
+    L=-tril(A,-1)
+    U=-triu(A,1)
+    Tgs=inv(D-L)*U
+    Cgs=inv(D-L)*b
+    [m,n] = size(A)
+    X=ones(n,1)
+    cont=0
+    disp(Tgs, 'Tgs');
+    disp(sum(Tgs), '(sum(Tgs)')
+    radio = max(abs(spec(Tgs)))
+    disp(radio, 'radio');
+
+
+    while N>cont
+        aux=Tgs*X+Cgs
+        X=aux
+        cont=cont+1
+    end
+    x=X
+endfunction
+
+
 // Gauss Seidel Iterations
 function [e, vf, z] = gauss_seidel_it(A, b, x0, it)
    if converge(A) == 1 then
@@ -145,7 +169,7 @@ function [e, vf, z] = jacobi_it(A, b, x0, it)
        [m, n] = size(A)
        D = diag(diag(A))
        L = tril(A, -1)
-       U = triu(A, 1)li
+       U = triu(A, 1)
 
        T = inv(D)*(L+U)
        C = inv(D)*b

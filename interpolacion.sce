@@ -7,6 +7,8 @@ function polinomio = interpolacion_polinomial(x, y, grado)
          aux = x(:)^(i-1)
          M = [M aux]
       end
+      disp(M)
+      disp(sum(M))
       coeficientes = inv(M'*M)*M'*y
       polinomio = poly(coeficientes, 'x', 'c')
    else

@@ -38,15 +38,26 @@
 //exec('~\mate-III\Algebra-Lineal-en-Scilab\spline_natural.sce', -1)
 
 // Integracion numerica
-exec('~\mate-III\Algebra-Lineal-en-Scilab\integracion_numerica.sce', -1)
+//exec('~\mate-III\Algebra-Lineal-en-Scilab\integracion_numerica.sce', -1)
 
-x = [0 2 4 6 8]'
-y = [0 1 1 1.3 1.3]'
+deff('y=f(x)', 'y=3*(x-4)-sin(2*x)')
+a = 0
+b = 5
+c = (a+b)/2
+err = (b-a)/2
+disp("a        b       c     f(a)     f(b)     f(c)     error")
+z = [a b c f(a) f(b) f(c) err]
+for i = 1:it
 
-T = trapecio_compuesto_puntos(x, y)
-S= simpson_compuesto_puntos(x, y)
-disp('Simpson: ', S)
-disp('Trapecio: ', T)
+   if f(a)*f(c) < 0 then
+      b = c
+   else
+      a = c
+   end
 
-t = inttrap(x, y)
-disp('Trapecio real: ', t)
+   c = (a+b)/2
+   err = err/2
+   z = [z; a b c f(a) f(b) f(c) err]
+
+end
+disp(z, 'z');

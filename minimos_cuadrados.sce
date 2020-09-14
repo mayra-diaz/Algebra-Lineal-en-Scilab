@@ -41,10 +41,13 @@ function minimos_cuadrados_2(x,y)
    yprom=sum(y)/j
    b=[sum(y);sum(xy); sum(xy.*x)]
    A=[j sum(x) sum(x2);sum(x) sum(x2) sum(x3); sum(x2) sum(x3) sum(x4)]
+disp(A)   
+disp(b)
    m=inv(A)*b
    y11=eye(j,1)
    e2=eye(j,1)
-   p=poly([m(3,1); m(2,1); m(1,1)]($:-1:1),'x','c')
+disp(m)  
+ p=poly([m(3,1); m(2,1); m(1,1)]($:-1:1),'x','c')
    disp(p,"Ajuste lineal por regresión cuadrática=")
    y11=(y-yprom)
    y11=y11.**2
@@ -73,6 +76,12 @@ function polinomio = minimos_cuadrados(x, y, grado)
       end
       b(i) = sum((x^(i-1)).*y)
    end
+   disp(A)
+   disp(sum(A))
    coeficientes = inv(A)*b
    polinomio = poly(coeficientes, 'x', 'c')
+
+   // ERROR
+   yprom = sum(y)/n
+
 endfunction

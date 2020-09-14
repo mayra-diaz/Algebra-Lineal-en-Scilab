@@ -4,8 +4,8 @@
 ------------------------------------------------------
 */
 
-deff('y=f(x)', 'y= 2*x')
-deff('y=g(x)', 'y= sqrt(x)')
+//deff('y=f(x)', 'y= 2*x')
+//deff('y=g(x)', 'y= sqrt(x)')
 
 
 /*
@@ -14,7 +14,7 @@ deff('y=g(x)', 'y= sqrt(x)')
 ------------------------------------------------------
 */
 function z = punto_fijo_tol(g, x0, tol)
-   if abs(numderivative(g, x0)) < 1 then
+   //if abs(numderivative(g, x0)) < 1 then
       err = 1
       x = x0
       z = [x err]
@@ -24,14 +24,14 @@ function z = punto_fijo_tol(g, x0, tol)
          err = abs(x-temp)
          z = [z; x err]
       end
-   else
+   /*else
       disp('No converge')
       z = 0
-   end
+   end*/
 endfunction
 
 function z = punto_fijo_it(g, x0, it)
-   if abs(numderivative(g, x0)) < 1 then
+   //if abs(numderivative(g, x0)) < 1 then
       err = 1
       x = x0
       z = [x err]
@@ -41,10 +41,10 @@ function z = punto_fijo_it(g, x0, it)
          err = abs(x-temp)
          z = [z; x err]
       end
-   else
+   /*else
       disp('No converge')
       z = 0
-   end
+   end*/
 endfunction
 
 

@@ -48,9 +48,10 @@ function [S, poll]=spline_natural(x, y)
       H = diag(diagprinc)
    end
    dy =6*diff(dd') ;// Matriz de diferencias divididas
-   M = H\dy ;
-   disp(M,"M=")
+   M = H\dy
+   disp(M,"M=") 
    M =[M0 M' Mn];
+  disp(M, "M2")
    for i =1:n
       S(i,1) =(M(i+1) - M(i))/(6*h(i)) ;
       S(i,2) = M(i)/2;
